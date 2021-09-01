@@ -1,0 +1,8 @@
+USE verificador_asistencia;
+
+CREATE TABLE cuentas(
+  id INT(7) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY(id),
+  user VARCHAR(100) NOT NULL,
+  pass VARCHAR(100) NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=latin1

@@ -1,0 +1,14 @@
+CREATE DATABASE verificador_asistencia;
+
+USE verificador_asistencia;
+
+CREATE TABLE usuarios(
+id INT(7) NOT NULL AUTO_INCREMENT,
+PRIMARY KEY(id),
+nombre VARCHAR(100) NOT NULL,
+apellido VARCHAR(100) NOT NULL,
+cedula VARCHAR(20) NOT NULL,
+telefono VARCHAR(20) NOT NULL,
+tipo VARCHAR(50) NOT NULL,
+qr VARCHAR(255) NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=latin1
