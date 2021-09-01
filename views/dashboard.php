@@ -36,9 +36,9 @@
   echo $alert;
 ?>
 
-  <div class="d-flex justify-content-center mt-4">
+  <div class="d-flex justify-content-center mt-4 mb-4">
     <div class="card" style="width: 80%">
-      <img src="..." class="card-img-top" alt="...">
+      <img src="<?= $_SESSION["qr"] ?>" class="card-img-top" alt="Codigo QR">
       <div class="card-body text-center">
         <h1 class="h3 text-info"><?= $_SESSION["tipo"] ?></h1>
         <h1 class="h6 text-secondary">Nombre</h1>

@@ -1,8 +1,14 @@
 <?php
-
+require_once("../phpqrcode/qrlib.php");
 require_once("conexion.php");
 
 class Users extends Conexion{
+
+  public function countAll(){
+    $petition = "SELECT * FROM usuarios";
+    $respSQL = $this->conexion->query($petition);
+    return $respSQL->num_rows;
+  }
 
   public function selectID($id){
     $petition = "SELECT * FROM usuarios WHERE id='$id'";
@@ -14,7 +20,8 @@ class Users extends Conexion{
         "apellido" => $row["apellido"],
         "cedula" => $row["cedula"],
         "telefono" => $row["telefono"],
-        "tipo" => $row["tipo"]
+        "tipo" => $row["tipo"],
+        "qr" => $row["qr"],
       ];
 
       return $array;
@@ -32,6 +39,7 @@ class Users extends Conexion{
   }
 
   public function register($arrayRegister){
+
     $name = ucfirst($arrayRegister['name']);
     $lastName = ucfirst($arrayRegister['lastName']);
     $dni = $arrayRegister['dni'];
@@ -39,7 +47,18 @@ class Users extends Conexion{
     $user = $arrayRegister["user"];
     $password = $arrayRegister["hashPass"];
 
-    $petition = "INSERT INTO usuarios(nombre,apellido,cedula,telefono,tipo) VALUES('$name', '$lastName', '$dni', '$phone','Estudiante')";
+    // creating qr
+    $numID = $this->countAll();
+    $numID = $numID+1;
+    $dir = "../qr/";
+    $filename = $dir.strval($numID).".png";
+    $size=15;
+    $level="M";
+    $frameSize = 3;
+    $contenido = "link";
+    QRcode::png($contenido,$filename,$level,$size,$frameSize);
+
+    $petition = "INSERT INTO usuarios(nombre,apellido,cedula,telefono,tipo,qr) VALUES('$name', '$lastName', '$dni', '$phone','Estudiante','$filename')";
     if ($result = $this->conexion->query($petition)) {
       $petition = "INSERT INTO cuentas(user,pass) VALUES('$user','$password')";
       if ($result = $this->conexion->query($petition)) {
@@ -61,5 +80,7 @@ class Users extends Conexion{
     }
   }
 }
+
+
 
 ?>
