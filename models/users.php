@@ -72,7 +72,7 @@ class Users extends Conexion{
     $dir = "../qr/";
     $filename = $dir.strval($numID).".png";
     $size=15;
-    $level="M";
+    $level="H";
     $frameSize = 3;
     // url
     // $host= $_SERVER["HTTP_HOST"];

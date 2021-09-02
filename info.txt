@@ -1,0 +1,9 @@
+Laragon 4.0.16
+
+apache 2.4.35
+
+phpMyAdmin SQL Dump version 5.1.1
+
+Mysql 5.7.24
+
+Versión de PHP: 7.2.19
