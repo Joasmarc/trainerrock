@@ -41,7 +41,14 @@ if (!empty($_REQUEST)) {
       if ($_SESSION["tipo"] === "Entrenador") return header("location:../views/dashboardT.php?msg=$msg");
       if ($_SESSION["tipo"] === "Estudiante") return header("location:../views/dashboard.php?msg=$msg");
       break;
-    
+
+    case 'search':
+      session_start();
+      if ($_SESSION["tipo"] != "Entrenador") exit(header("location:../views/error.php?REASON=Acceso%20Denegado"));
+      $string = $_POST["string"];
+      return header("location:../views/dashboardTable.php?search=$string");
+      break;
+
     default:
       exit(header("location:../views/error.php?REASON=Error%20De%20REQUEST"));
       break;

@@ -102,8 +102,26 @@ class Users extends Conexion{
       exit(header("location:../views/error.php?REASON=Problema%20Actualizar%20Numero"));
     }
   }
+
+  public function searchName($string){
+    $petition = "SELECT * FROM `usuarios` WHERE CONCAT(nombre,' ',apellido) LIKE '%$string%'";
+    
+    if ($respSQL = $this->conexion->query($petition)) {
+      while($row = $respSQL->fetch_assoc()){
+        $array[] = [
+          "id" => $row["id"],
+          "nombre" => $row["nombre"],
+          "apellido" => $row["apellido"],
+          "cedula" => $row["cedula"],
+          "telefono" => $row["telefono"],
+          "tipo" => $row["tipo"],
+          "qr" => $row["qr"]
+        ];
+      }
+
+      if(!empty($array))return $array;
+    }else return null;
+  }
 }
-
-
 
 ?>

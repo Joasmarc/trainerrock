@@ -113,5 +113,11 @@ class Controller{
     $userArray = $this->users->selectID($id);
     return $userArray;
   }
+
+  public function searchName($string){
+    $arrayResult = $this->users->searchName($string);
+    return $arrayResult;
+  }
+
 }
 ?>

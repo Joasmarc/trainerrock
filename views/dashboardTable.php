@@ -6,23 +6,42 @@ if ($_SESSION["tipo"] != "Entrenador") {
   exit(header("location:error.php?REASON=Acceso%20Denegado"));
 }
 $controller = new Controller();
-$list = $controller->selectAll();
+$msg = null;
+$viewTable = null;
+$list = null;
+
+if (empty($_GET["search"])) {
+  $list = $controller->selectAll();
+}else {
+  $list = $controller->searchName($_GET["search"]);
+  if ($list === null) {
+    $msg = "Ningun Resultado";
+    $viewTable = "hidden";
+  }
+}
+
 ?>
-<div class="m-3 d-flex justify-content-center" style="width: 85%">
-  <div class="input-group input-group-lg m-3">
-    <span class="btn btn-info" id="inputGroup-sizing-lg">Buscar</span>
-    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+<div class="m-3">
+  <div class="input-group input-group-lg d-flex justify-content-center">
+    <form class="justify-content-center" action="../controllers/listener.php" method="post">
+      <input type="hidden" name="REQUEST" value="search">
+      <input name="string" type="text" class="col-12 form-control my-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+      <button type="submit" class="btn btn-info col-12" id="inputGroup-sizing-lg">Buscar</button>
+    </form>
   </div>
 </div>
 
+<h1 class="fs-1 text-center"><?= $msg ?></h1>
+
 <div class="d-flex justify-content-center">
   <table class="table table-success table-striped d-flex justify-content-center">
-    <tr>
+    <tr <?= $viewTable ?> >
       <th scope="col">Nombre</th>
       <th scope="col">Apellido</th>
       <th scope="col">Opciones</th>
     </tr>
 
+    <?php if (!empty($list)):?>
     <?php foreach ($list as $value):?>
     <tr>
       <td><?= $value["nombre"] ?></td>
@@ -30,6 +49,7 @@ $list = $controller->selectAll();
       <td class="d-flex justify-content-center"><a href="cardstudent.php?id=<?= $value["id"] ?>"><button class="btn btn-info">Ver</button></a></td>
     </tr>
     <?php endforeach; ?>
+    <?php endif; ?>
   </table>
 </div>
 
