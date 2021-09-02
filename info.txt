@@ -7,3 +7,7 @@ phpMyAdmin SQL Dump version 5.1.1
 Mysql 5.7.24
 
 Versión de PHP: 7.2.19
+
+VsCode 1.59.1
+
+Chorme Versión 92.0.4515.159 (Build oficial) (64 bits)
