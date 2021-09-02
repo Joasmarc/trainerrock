@@ -1,6 +1,5 @@
 <?php
 require_once("controller.php");
-session_start();
 $controller = new Controller();
 
 if (!empty($_REQUEST)) {
@@ -23,8 +22,14 @@ if (!empty($_REQUEST)) {
       header("location:../index.php?msg=Session%20Cerrada!!");
       break;
 
-    case 'value':
-      # code...
+    case 'attendance':
+      session_start();
+      var_dump($_SESSION);
+      if ($_SESSION["permitted"]) {
+        $controller->attendance($_GET["id"]);
+      }else{
+        exit(header("location:error.php?REASON=Acceso%20Denegado"));
+      }
       break;
     
     default:

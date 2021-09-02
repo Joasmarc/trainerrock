@@ -1,9 +1,15 @@
 <?php
 
-require("../models/users.php");
+$host= $_SERVER["HTTP_HOST"];
+$url= $_SERVER["REQUEST_URI"];
+$link = $host.$url;
 
-$users = new users();
+echo $host;
+echo "<br>";
+echo $url;
+echo "<br>";
+echo $link;
+echo "<br>";
 
-var_dump($users->countAll());
-
+echo "<a href='http://$link'>Link de host</a>";
 ?>

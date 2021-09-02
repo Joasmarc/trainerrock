@@ -2,15 +2,18 @@
 
 require_once("../models/users.php");
 require_once("../models/accounts.php");
+require_once("../models/Attendance.php");
 
 class Controller{
 
   private $users;
   private $accounts;
+  private $attendance;
 
   public function __construct(){
     $this->users = new Users();
     $this->accounts = new Accounts();
+    $this->attendance = new Attendance();
   }
 
   public function register($arrayRegister){
@@ -71,8 +74,8 @@ class Controller{
 
         if ($_SESSION["tipo"] === "Estudiante") {
           return header("location:../views/dashboard.php");
-        }else if($_SESSION["tipo"] === "Administrador"){
-          // retornar dashboard admin
+        }else if($_SESSION["tipo"] === "Entrenador"){
+          return header("location:../views/dashboardT.php");
         }
       }else{
         exit(header("location:../views/register.php?error=Cuenta%20No%20Existe%20Puede%20Crear%20Una%20Nueva"));
@@ -88,6 +91,17 @@ class Controller{
     }else{
       return header("location:../views/dashboard.php?msg=uptNumFalse");
     }
+  }
+
+  public function attendance($id){
+    $userArray = $this->users->selectID($id);
+    if($this->attendance->register($userArray)){
+      $name = $userArray["nombre"];
+      $lastName = $userArray["apellido"];
+      return header("location:../views/dashboardT.php?msg=AttendaceTrue&name=$name&lastName=$lastName");
+    }else{
+
+    };
   }
 }
 

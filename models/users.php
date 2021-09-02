@@ -55,7 +55,12 @@ class Users extends Conexion{
     $size=15;
     $level="M";
     $frameSize = 3;
-    $contenido = "link";
+    // url
+    // $host= $_SERVER["HTTP_HOST"];
+    $host="192.168.1.4/";
+    $url= $_SERVER["REQUEST_URI"];
+    $link = $host."/verificador_asistencia/controllers/listener.php";
+    $contenido = "http:/".$link."?REQUEST=attendance&id=$numID";
     QRcode::png($contenido,$filename,$level,$size,$frameSize);
 
     $petition = "INSERT INTO usuarios(nombre,apellido,cedula,telefono,tipo,qr) VALUES('$name', '$lastName', '$dni', '$phone','Estudiante','$filename')";
