@@ -1,0 +1,34 @@
+CREATE DATABASE verificador_asistencia;
+
+USE verificador_asistencia;
+
+CREATE TABLE usuarios(
+id INT(7) NOT NULL AUTO_INCREMENT,
+PRIMARY KEY(id),
+nombre VARCHAR(100) NOT NULL,
+apellido VARCHAR(100) NOT NULL,
+cedula VARCHAR(20) NOT NULL,
+telefono VARCHAR(20) NOT NULL,
+tipo VARCHAR(50) NOT NULL,
+qr VARCHAR(255) NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+USE verificador_asistencia;
+
+CREATE TABLE cuentas(
+  id INT(7) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY(id),
+  user VARCHAR(100) NOT NULL,
+  pass VARCHAR(100) NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+USE verificador_asistencia;
+
+CREATE TABLE asistencia(
+  id INT(7) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY(id),
+  idStudent INT(7) NOT NULL,
+  name VARCHAR(100) NOT NULL,
+  lastName VARCHAR(100) NOT NULL,
+  fecha TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+)ENGINE=InnoDB DEFAULT CHARSET=latin1

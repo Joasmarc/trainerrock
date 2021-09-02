@@ -46,11 +46,15 @@ if (empty($_GET["search"])) {
     <tr>
       <td><?= $value["nombre"] ?></td>
       <td><?= $value["apellido"] ?></td>
-      <td class="d-flex justify-content-center"><a href="cardstudent.php?id=<?= $value["id"] ?>"><button class="btn btn-info">Ver</button></a></td>
+      <td class="d-flex justify-content-center"><a href="cardstudent.php?id=<?= $value["id"] ?>"><button class="btn btn-info p-2">Ver</button></a></td>
     </tr>
     <?php endforeach; ?>
     <?php endif; ?>
   </table>
+</div>
+
+<div class="d-flex justify-content-center">
+  <a href="../index.php"><button class="btn btn-secondary my-2"><h1 class="h5 p-2">Volver</h1></button></a>
 </div>
 
 <?php

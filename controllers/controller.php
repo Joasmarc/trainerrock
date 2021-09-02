@@ -119,5 +119,9 @@ class Controller{
     return $arrayResult;
   }
 
+  public function selectDate($id){
+    $arrayDate = $this->attendance->selectDate($id);
+    return $arrayDate;
+  }
 }
 ?>

@@ -31,6 +31,7 @@
           <input type="number" name="newPhone" id="newPhone" hidden class="form-control p-3 fs-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
           <button id="btnSubmitPhone" type="submit" class="btn btn-success my-2" hidden><h1 class="h5 p-2">Actualizar Telefono</h1></button>
         </form>
+        <a href="attendancelist.php?id=<?= $userArray["id"] ?>"><button class="btn btn-success my-2"><h1 class="h5 p-2">Lista de Asistencia</h1></button></a>
         <a href="dashboardTable.php"><button class="btn btn-secondary my-2"><h1 class="h5 p-2">Volver</h1></button></a>
       </div>
     </div>

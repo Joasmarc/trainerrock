@@ -28,12 +28,12 @@
   <h1 class="display-2 text-center text-info">Inicio de Sesion</h1>
   <h1 class="display-4 text-center text-dark">Verificador de Asistencia</h1>
 <!-- container form -->
-<div class="text-center d-flex justify-content-center my-5">
+<div class="text-center d-flex justify-content-center my-3">
   <form action="controllers/listener.php" method="POST" class="card border shadow" style="width: 80%">
   <input type="hidden" name="REQUEST" value="login">
   <!-- usuario -->
     <div class="mb-3 px-5">
-      <label for="exampleInputEmail1" class="form-label h5 text-secondary">Usuario</label>
+      <label for="exampleInputEmail1" class="form-label h5 text-secondary mt-3">Usuario</label>
       <input name="user" type="text" class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="emailHelp">
     </div>
     <!-- password -->

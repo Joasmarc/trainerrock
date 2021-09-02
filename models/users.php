@@ -19,7 +19,8 @@ class Users extends Conexion{
         ];
       }
     }
-    return $array;
+    if(!empty($array))return $array;
+    else return null;
   }
 
   public function countAll(){
