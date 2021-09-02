@@ -4,6 +4,24 @@ require_once("conexion.php");
 
 class Users extends Conexion{
 
+  public function selectAll(){
+    $petition = "SELECT * FROM usuarios WHERE tipo='Estudiante'";
+    if ($respSQL = $this->conexion->query($petition)) {
+      while($row = $respSQL->fetch_assoc()){
+        $array[] = [
+          "id" => $row["id"],
+          "nombre" => $row["nombre"],
+          "apellido" => $row["apellido"],
+          "cedula" => $row["cedula"],
+          "telefono" => $row["telefono"],
+          "tipo" => $row["tipo"],
+          "qr" => $row["qr"]
+        ];
+      }
+    }
+    return $array;
+  }
+
   public function countAll(){
     $petition = "SELECT * FROM usuarios";
     $respSQL = $this->conexion->query($petition);

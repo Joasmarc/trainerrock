@@ -1,5 +1,10 @@
 <?php
   $alert = null;
+  session_start();
+
+  if (!empty($_SESSION["permitted"]) && $_SESSION["permitted"]) {
+    exit(header("location:controllers/listener.php?REQUEST=rol"));
+  }
 
   if (!empty($_GET["msg"])) {
         $alert = 

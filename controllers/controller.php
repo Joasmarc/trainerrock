@@ -87,9 +87,9 @@ class Controller{
   public function updatePhone($id,$newPhone){
     if($this->users->updatePhone($id,$newPhone)){
       $_SESSION["telefono"] = $newPhone;
-      return header("location:../views/dashboard.php?msg=uptNumTrue");
+      return header("location:listener.php?REQUEST=rol&msg=uptNumTrue");
     }else{
-      return header("location:../views/dashboard.php?msg=uptNumFalse");
+      return header("location:listener.php?REQUEST=rol&msg=uptNumFalse");
     }
   }
 
@@ -103,6 +103,15 @@ class Controller{
 
     };
   }
-}
 
+  public function selectAll(){
+    $list = $this->users->selectAll();
+    return $list;
+  }
+
+  public function selectID($id){
+    $userArray = $this->users->selectID($id);
+    return $userArray;
+  }
+}
 ?>

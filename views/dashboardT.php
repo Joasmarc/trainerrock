@@ -15,8 +15,22 @@
           "</div>";
           break;
 
+          case 'uptNumTrue':
+            $alert = 
+            "<div class='alert alert-success text-center' role='alert'>"
+            ."Numero Actualizado".
+            "</div>";
+            break;
+  
+          case 'uptNumFalse':
+            $alert = 
+            "<div class='alert alert-danger text-center' role='alert'>"
+            ."Error  al Actualizar numero".
+            "</div>";
+            break;
+
         default:
-          $alert = "Error de get";
+          $alert = "Error con parametros GET";
           break;
       }
     }
@@ -45,7 +59,7 @@
           <button id="btnSubmitPhone" type="submit" class="btn btn-success my-2" hidden><h1 class="h5 p-2">Actualizar Telefono</h1></button>
         </form>
         <!-- btn Search Student -->
-        <a href=""><button type="button" class="btn btn-success my-2"><h1 class="h5 p-2">Buscar Estudiante</h1></button></a>
+        <a href="dashboardTable.php"><button type="button" class="btn btn-success my-2"><h1 class="h5 p-2">Buscar Estudiante</h1></button></a>
         <!-- btn Update Phone -->
         <button id="btnUpdatePhone" type="button" class="btn btn-warning my-2"><h1 class="h5 p-2">Editar Telefono</h1></button>
         <!-- btn Close Session -->
